@@ -3,7 +3,7 @@
 @theme {
     --color-brand-blue: #4f7df2;
     --color-brand-blue-hover: #3b6ae2;
-    --color-brand-purple: #863bff;
+    --color-brand-purple: #7489FF;
     --color-brand-green: #2ac084;
     --color-brand-dark: #08060d;
     --color-brand-bg-light: #f5f8ff;
@@ -31,7 +31,6 @@ input::placeholder,
 textarea::placeholder {
     color: #D1D5DB;
     opacity: 1;
-    /* Override default browser opacity if any */
 }
 
 /* Clean, minimal spacing and layout overrides for PrimeReact components */
@@ -77,4 +76,266 @@ textarea::placeholder {
 /* Padding between the Toast status icon and text */
 .p-toast-message-icon {
     margin-right: 12px !important;
+}
+
+/* Dropdown & MultiSelect custom styling overrides for Figma Look */
+.p-dropdown,
+.p-multiselect {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    height: 42px !important;
+    align-items: center !important;
+    box-shadow: none !important;
+}
+
+.p-dropdown:not(.p-disabled):hover,
+.p-multiselect:not(.p-disabled):hover {
+    border-color: #94a3b8 !important;
+}
+
+.p-dropdown:not(.p-disabled).p-focus,
+.p-multiselect:not(.p-disabled).p-focus {
+    border-color: #384EC7 !important;
+    box-shadow: 0 0 0 1px #384EC7 !important;
+}
+
+.p-dropdown .p-dropdown-label,
+.p-multiselect .p-multiselect-label {
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+}
+
+.p-dropdown .p-dropdown-label.p-placeholder,
+.p-multiselect .p-placeholder {
+    color: #94a3b8 !important;
+}
+
+.p-dropdown .p-dropdown-trigger,
+.p-multiselect .p-multiselect-trigger {
+    width: 2.5rem !important;
+    color: #64748b !important;
+}
+
+/* MultiSelect Comma display layout */
+.p-multiselect-label-container {
+    align-items: center !important;
+    display: flex !important;
+    height: 100% !important;
+}
+
+/* Dropdown and MultiSelect Overlay Panels styling */
+.p-dropdown-panel,
+.p-multiselect-panel {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+    padding: 6px !important;
+}
+
+.p-dropdown-items,
+.p-multiselect-items {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+}
+
+.p-dropdown-item,
+.p-multiselect-item {
+    padding: 8px 12px !important;
+    margin: 2px 0 !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    color: #334155 !important;
+    transition: background-color 0.15s, color 0.15s !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    /* Spacing between checkbox and text label */
+}
+
+.p-dropdown-item:hover,
+.p-multiselect-item:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+.p-dropdown-item.p-highlight,
+.p-multiselect-item.p-highlight {
+    background-color: #F8FAFF !important;
+    color: #384EC7 !important;
+    font-weight: 500 !important;
+}
+
+.p-multiselect-header {
+    padding: 8px 12px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+    margin-bottom: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+}
+
+.p-multiselect-filter-container {
+    width: 100% !important;
+    margin-right: 8px !important;
+}
+
+.p-multiselect-filter-container .p-inputtext {
+    padding: 6px 10px 6px 30px !important;
+    font-size: 13px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+}
+
+/* Checkbox Overrides for visibility */
+.p-checkbox .p-checkbox-box {
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    border-radius: 4px !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: border-color 0.2s, background-color 0.2s !important;
+    box-shadow: none !important;
+}
+
+.p-checkbox .p-checkbox-box:hover {
+    border-color: #94a3b8 !important;
+}
+
+.p-checkbox-checked .p-checkbox-box,
+.p-checkbox .p-checkbox-box.p-highlight,
+.p-multiselect-item.p-highlight .p-checkbox-box {
+    border-color: #384EC7 !important;
+    background: #384EC7 !important;
+    background-color: #384EC7 !important;
+}
+
+.p-checkbox-checked .p-checkbox-box .p-checkbox-icon,
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon,
+.p-multiselect-item.p-highlight .p-checkbox-icon {
+    display: inline-block !important;
+    visibility: visible !important;
+    color: #ffffff !important;
+}
+
+/* RadioButton Overrides for visibility */
+.p-radiobutton .p-radiobutton-box {
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+    transition: border-color 0.2s, background-color 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: none !important;
+}
+
+.p-radiobutton .p-radiobutton-box:not(.p-disabled):hover {
+    border-color: #94a3b8 !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: #384EC7 !important;
+    background: #ffffff !important;
+}
+
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+    background-color: #384EC7 !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    transform: scale(1) !important;
+    transition: transform 0.2s ease !important;
+}
+
+/* Floating absolute InputNumber buttons inside the input box */
+.p-inputnumber {
+    position: relative !important;
+    display: inline-flex !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+}
+
+.p-inputnumber:hover {
+    border-color: #94a3b8 !important;
+}
+
+.p-inputnumber.p-inputnumber-focus {
+    border-color: #384EC7 !important;
+    box-shadow: 0 0 0 1px #384EC7 !important;
+}
+
+.p-inputnumber-input {
+    border: none !important;
+    background: transparent !important;
+    padding: 8px 32px 8px 12px !important;
+    height: 40px !important;
+    width: 100% !important;
+    box-shadow: none !important;
+}
+
+.p-inputnumber-button-group {
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 28px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+    border-left: 1px solid #e2e8f0 !important;
+}
+
+.p-inputnumber-button {
+    background: #f8fafc !important;
+    border: none !important;
+    color: #64748b !important;
+    width: 100% !important;
+    height: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+}
+
+.p-inputnumber-button:hover {
+    background: #f1f5f9 !important;
+    color: #334155 !important;
+}
+
+.p-inputnumber-increment-button {
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.p-inputnumber-decrement-button {
+    border-top: none !important;
+}
+
+/* Hide native spinner arrows for numeric input text elements */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }

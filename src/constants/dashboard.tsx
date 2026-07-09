@@ -1,4 +1,3 @@
-import React from 'react';
 import dayjs from 'dayjs';
 import ButtonWithLoader from '@/components/common/ButtonWithLoader';
 import { ROUTES } from '@/constants/routes';

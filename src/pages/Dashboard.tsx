@@ -66,7 +66,7 @@ function Dashboard() {
     const columns = useMemo(() => getColumns(navigate, handleDelete), [navigate, handleDelete]);
 
     return (
-        <Layout>
+        <Layout isLoading={isLoading} error={error}>
             <ConfirmDialog />
 
             <div className="max-w-7xl mx-auto space-y-6">
@@ -85,8 +85,6 @@ function Dashboard() {
                     pageSize={PAGE_SIZE}
                     totalItems={totalItems}
                     onPageChange={handlePageChange}
-                    isLoading={isLoading}
-                    error={error}
                     emptyMessage="No tests available"
                 />
             </div>
