@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
@@ -9,23 +9,18 @@ import logo from '@/assets/logo.svg';
 import illustration from '@/assets/login-illustration.svg';
 import ButtonWithLoader from '@/components/common/ButtonWithLoader';
 import Input from '@/components/common/Input';
-import Error from '@/components/common/Error';
 import { STORAGE_KEYS } from '@/constants/storage';
 import { setStorageItem } from '@/utils/storage';
+import { useToast } from '@/context/ToastContext';
 
-export default function Login() {
+function Login() {
     const navigate = useNavigate();
+    const toast = useToast();
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { userId: '', password: '' } });
-    const [formError, setFormError] = useState('');
 
     const loginMutation = useMutation({
-        mutationFn: (credentials: { userId: string; password?: string }) =>
-            apiCall(API_ENDPOINTS.LOGIN, {
-                method: API_METHODS.POST,
-                body: credentials,
-            }),
+        mutationFn: (credentials: { userId: string; password?: string }) => apiCall(API_ENDPOINTS.LOGIN, { method: API_METHODS.POST, body: credentials }),
         onSuccess: (result, variables) => {
-            console.log("Login API result:", result);
             const isSuccessful = result.success === true || result.status === 'success';
 
             if (isSuccessful) {
@@ -36,22 +31,15 @@ export default function Login() {
                 // Redirect to dashboard
                 navigate(ROUTES.DASHBOARD);
             } else {
-                setFormError(result.message || 'Invalid User ID or password');
+                toast.showError(result.message || 'Invalid User ID or password');
             }
         },
-        onError: (err) => {
-            setFormError(err.message || 'Something went wrong');
-        }
+        onError: (err) => toast.showError(err.message || 'Something went wrong')
     });
 
-    const onSubmit = (data: { userId: string; password?: string }) => {
-        setFormError('');
+    const onSubmit = useCallback((data: { userId: string; password?: string }) => {
         loginMutation.mutate(data);
-    };
-
-    const isLoading = loginMutation.isPending;
-    const error = formError || (loginMutation.error as any)?.message;
-    console.log("re-renders");
+    }, [loginMutation]);
 
     return (
         <main className="flex min-h-screen w-full bg-[#f8fafc]">
@@ -77,7 +65,7 @@ export default function Login() {
                                 label="User ID"
                                 type="text"
                                 placeholder="Enter User ID"
-                                disabled={isLoading}
+                                disabled={loginMutation.isPending}
                                 error={errors.userId?.message}
                                 {...register('userId', { required: 'User ID is required' })}
                             />
@@ -86,7 +74,7 @@ export default function Login() {
                                 label="Password"
                                 type="password"
                                 placeholder="Enter Password"
-                                disabled={isLoading}
+                                disabled={loginMutation.isPending}
                                 error={errors.password?.message}
                                 {...register('password', { required: 'Password is required' })}
                             />
@@ -97,11 +85,9 @@ export default function Login() {
                                 </a>
                             </div>
 
-                            <ButtonWithLoader type="submit" isLoading={isLoading} >
+                            <ButtonWithLoader type="submit" isLoading={loginMutation.isPending} className="h-12 w-full" >
                                 Login
                             </ButtonWithLoader>
-
-                            <Error message={error} />
                         </form>
                     </div>
                 </div>
@@ -109,3 +95,5 @@ export default function Login() {
         </main>
     );
 }
+
+export default React.memo(Login);

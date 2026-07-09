@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import bellSvg from '@/assets/bell.svg';
 import avatarSvg from '@/assets/avatar.svg';
 import ChevronDownIcon from '@/assets/chevron-down.svg?react';
 import { STORAGE_KEYS } from '@/constants/storage';
 import { getStorageItem } from '@/utils/storage';
 
-export default function Header() {
-    const user = getStorageItem<{ name?: string; userId?: string; role?: string }>(STORAGE_KEYS.USER);
+function Header() {
+    const user = useMemo(() => {
+        return getStorageItem<{ name?: string; userId?: string; role?: string }>(STORAGE_KEYS.USER);
+    }, []);
+
     const userName = user?.name || user?.userId || 'Alex Wando';
     const userRole = user?.role || 'Admin';
 
@@ -38,3 +41,5 @@ export default function Header() {
         </header>
     );
 }
+
+export default React.memo(Header);

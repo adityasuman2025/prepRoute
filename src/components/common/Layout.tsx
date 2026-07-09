@@ -5,7 +5,7 @@ import Header from './Header';
 interface LayoutProps {
     children: React.ReactNode;
 }
-export default function Layout({ children }: LayoutProps) {
+function Layout({ children }: LayoutProps) {
     return (
         <div className="flex h-screen w-full bg-white overflow-hidden">
             <Navbar />
@@ -20,3 +20,5 @@ export default function Layout({ children }: LayoutProps) {
         </div>
     );
 }
+
+export default React.memo(Layout);

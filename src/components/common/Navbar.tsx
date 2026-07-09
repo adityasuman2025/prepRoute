@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { NAV_ITEMS } from '@/constants/routes';
 import logo from '@/assets/logo.svg';
 
-export default function Navbar() {
+function Navbar() {
     return (
         <aside className="w-64 h-screen bg-white border-r border-slate-200 flex flex-col py-6 select-none shrink-0 font-sans">
             <div className="px-6 mb-12">
@@ -46,3 +46,5 @@ export default function Navbar() {
         </aside>
     );
 }
+
+export default React.memo(Navbar);

@@ -1,17 +1,17 @@
 import React from 'react';
-import loaderSvg from '@/assets/loader.svg';
+import LoaderSvg from '@/assets/loader.svg?react';
 
-interface LoaderProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface LoaderProps extends React.SVGProps<SVGSVGElement> {
     className?: string;
 }
+function Loader({ className = '', ...props }: LoaderProps) {
+    // If custom width or height classes are passed, don't force the default h-5 w-5 size
+    const hasCustomSize = className.includes('w-') || className.includes('h-');
+    const sizeClasses = hasCustomSize ? '' : 'h-5 w-5';
 
-export default function Loader({ className = '', ...props }: LoaderProps) {
     return (
-        <img
-            src={loaderSvg}
-            className={`animate-spin h-5 w-5 ${className}`}
-            alt="loading..."
-            {...props}
-        />
+        <LoaderSvg className={`animate-spin ${sizeClasses} ${className}`} {...props} />
     );
 }
+
+export default React.memo(Loader);

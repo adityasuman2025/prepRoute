@@ -7,9 +7,11 @@ import { getStorageItem } from '@/utils/storage';
 interface IsNotAuthenticatedProps {
     children: React.ReactNode;
 }
-export default function IsNotAuthenticated({ children }: IsNotAuthenticatedProps) {
+function IsNotAuthenticated({ children }: IsNotAuthenticatedProps) {
     const token = getStorageItem<string>(STORAGE_KEYS.TOKEN);
 
     if (token) return <Navigate to={ROUTES.DASHBOARD} replace />;
     return <>{children}</>;
 }
+
+export default React.memo(IsNotAuthenticated);

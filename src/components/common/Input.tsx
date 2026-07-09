@@ -5,7 +5,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     error?: string;
     ref?: React.Ref<HTMLInputElement>;
 }
-export default function Input({ label, error, className = '', ref, ...props }: InputProps) {
+function Input({ label, error, className = '', ref, ...props }: InputProps) {
     return (
         <label className="block text-base font-medium text-brand-text">
             {label}
@@ -20,3 +20,6 @@ export default function Input({ label, error, className = '', ref, ...props }: I
         </label>
     );
 }
+
+export default React.memo(Input);
+export type { InputProps };

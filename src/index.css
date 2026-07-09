@@ -11,7 +11,7 @@
     --color-brand-text: #374151;
     --color-brand-primary: #384EC7;
     --color-brand-gray: #6B7180;
-    
+
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -30,5 +30,51 @@ body,
 input::placeholder,
 textarea::placeholder {
     color: #D1D5DB;
-    opacity: 1; /* Override default browser opacity if any */
+    opacity: 1;
+    /* Override default browser opacity if any */
+}
+
+/* Clean, minimal spacing and layout overrides for PrimeReact components */
+.p-component-overlay,
+.p-dialog-mask {
+    background-color: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.p-dialog {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--color-brand-border) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+}
+
+.p-dialog-header {
+    padding: 24px 24px 8px 24px !important;
+}
+
+.p-dialog-content {
+    padding: 0 24px 20px 24px !important;
+    color: var(--color-brand-text) !important;
+    font-size: 15px !important;
+}
+
+.p-dialog-footer {
+    padding: 16px 24px 24px 24px !important;
+    background: #f8fafc !important;
+    border-top: 1px solid var(--color-brand-border) !important;
+}
+
+.p-dialog .p-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.p-toast-message-content {
+    padding: 16px 20px !important;
+}
+
+/* Padding between the Toast status icon and text */
+.p-toast-message-icon {
+    margin-right: 12px !important;
 }

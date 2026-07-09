@@ -5,7 +5,7 @@ interface ErrorProps {
     className?: string;
 }
 
-export default function Error({ message, className = '' }: ErrorProps) {
+function Error({ message, className = '' }: ErrorProps) {
     if (!message) return null;
 
     return (
@@ -14,3 +14,5 @@ export default function Error({ message, className = '' }: ErrorProps) {
         </div>
     );
 }
+
+export default React.memo(Error);
